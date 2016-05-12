@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+
+        <input v-model="message" type="text">
+
+        <pre><hr>{{ $data | json }}<hr></pre>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+//        // Model
+//        var data = {
+//            message: 'Hello Word'
+//        }
+
+        new Vue({
+            el: '#app',
+
+//            data: data,
+
+            data: {
+                message: 'Hello Word'
+            },
+        });
+    </script>
+</body>
+</html>
