@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>VueJS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
-        <h1>{{ message }}</h1>
+        <form>
+            <span class="error" v-show="!message">
+                You must enter a message
+            </span>
 
-        <input v-model="message" type="text">
+            <textarea v-model="message"></textarea>
+
+            <button type="submit" v-if="message">
+                Send Message
+            </button>
+        </form>
 
         <pre><hr>{{ $data | json }}<hr></pre>
     </div>
 
     <script src="vue.js"></script>
     <script>
-//        // Model
-//        var data = {
-//            message: 'Hello Word'
-//        }
 
         new Vue({
             el: '#app',
 
-//            data: data,
-
             data: {
-                message: 'Hello Word'
+                message: ''
             },
         });
     </script>
