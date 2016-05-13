@@ -6,27 +6,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
+<div id="app">
 
-        <tasks :list="tasks"></tasks>
+    <tasks :list="tasks"></tasks>
 
-        <pre><hr>{{ $data | json }}<hr></pre>
-    </div>
+    <pre><hr>{{ $data | json }}<hr></pre>
+</div>
 
-    <template id="tasks-template">
-        <h1>My Tasks ({{ remaining }})</h1>
-        <ul>
-            <li :class="{ 'completed' : task.completed }"
-                v-for="task in list"
-                @click="task.completed = ! task.completed"
-            >
-                {{ task.body }}
-            </li>
-        </ul>
-    </template>
+<template id="tasks-template">
+    <h1>
+        My Tasks
+        <span v-show="remaining">({{ remaining }})</span>
+    </h1>
+
+    <ul v-show="list.length">
+        <li :class="{ 'completed' : task.completed }"
+            v-for="task in list"
+            @click="task.completed = ! task.completed"
+        >
+            {{ task.body }}
+
+            <strong @click="deleteTask(task)">[x]</strong>
+        </li>
+    </ul>
+
+    <p v-else>
+        No Tasks yet!
+    </p>
+
+    <button @click="clearCompleted">Clear Completed</button>
+</template>
 
 
-    <script src="vue.js"></script>
-    <script src="main.js"></script>
+<script src="vue.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

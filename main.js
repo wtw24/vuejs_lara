@@ -5,11 +5,7 @@ Vue.component('tasks', {
 
     computed: {
         remaining: function () {
-            var that = this;
-
-            return this.list.filter(function (task) {
-                return that.isInProgress(task);
-            }).length;
+            return this.list.filter(this.inProgress).length;
         },
     },
 
@@ -18,8 +14,16 @@ Vue.component('tasks', {
             return task.completed;
         },
 
-        isInProgress: function (task) {
+        inProgress: function (task) {
             return ! task.completed;
+        },
+
+        deleteTask: function (task) {
+            this.list.$remove(task);
+        },
+
+        clearCompleted: function () {
+            this.list = this.list.filter(this.inProgress);
         }
     },
 });
