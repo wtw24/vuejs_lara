@@ -7,13 +7,10 @@
 </head>
 <body>
     <div id="app">
-        <!--<form action="done.html" v-on:submit.stop="handleIt">-->
-        <form action="done.html" @submit.prevent="handleIt">
-
-            <button type="submit">
-                Submit Me!
-            </button>
-        </form>
+        <!--<button type="submit" @click="updateCount">-->
+        <button type="submit" @click="count += 1">
+            Increment Counter: {{ count }}
+        </button>
 
         <pre><hr>{{ $data | json }}<hr></pre>
     </div>
@@ -24,18 +21,15 @@
         new Vue({
             el: '#app',
 
-            methods: {
-//                handleIt: function (e) {
-//                    e.preventDefault();
-//
-//                    alert('handle');
-//                }
-                handleIt: function (e) {
-                    e.preventDefault();
+            data: {
+                count: 0,
+            },
 
-                    alert('handle');
+            methods: {
+                updateCount: function () {
+                    this.count += 1;
                 }
-            }
+            },
         });
     </script>
 </body>
