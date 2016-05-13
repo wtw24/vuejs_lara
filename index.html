@@ -9,30 +9,28 @@
     <div id="app">
 
         <div v-for="plan in plans">
-            <plan :plan="plan" :active.sync="active"></plan>
+            <plan :plan="plan" :active.sync="active" inline-template>
+                <div class="plan">
+                    <span class="plan-name">{{ plan.name }}</span>
+                    <span class="plan-price">{{ plan.price }}/month</span>
+
+                    <button @click="setActivePlan" v-show="plan.name !== active.name">
+                        {{ isUpgrade ? 'Upgrade' : 'Downgrade' }}
+                    </button>
+
+                    <span v-else>
+                        Current
+                    </span>
+                </div>
+            </plan>
         </div>
 
-        <pre><hr>{{ $data | json }}<hr></pre>
+        <!--<pre><hr>{{ $data | json }}<hr></pre>-->
     </div>
 
-    <template id="plan-template">
-        <div class="plan">
-            <span class="plan-name">{{ plan.name }}</span>
-            <span class="plan-price">{{ plan.price }}/month</span>
-
-            <button @click="setActivePlan" v-show="plan.name !== active.name">
-                {{ isUpgrade ? 'Upgrade' : 'Downgrade' }}
-            </button>
-
-            <span v-else>
-                Current
-            </span>
-        </div>
-    </template>
 
     <script src="vue.js"></script>
     <script>
-
 
         var vm = new Vue({
             el: '#app',
@@ -49,8 +47,6 @@
 
             components: {
                 plan:  {
-                    template: '#plan-template',
-
                     props: ['plan', 'active'],
 
                     computed: {
