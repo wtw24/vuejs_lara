@@ -8,7 +8,6 @@
 <body>
     <div id="app">
 
-        <!--<h1>{{ first }} {{ last }}</h1>-->
         <h1>{{ fullName }}</h1>
 
         <input type="text" v-model="first" placeholder="First Name">
@@ -27,16 +26,11 @@
             data: {
                 first: 'Wladimir',
                 last: 'Wendland',
-                fullName: 'Wladimir Wendland',
             },
 
-            watch: {
-                first: function (first) {
-                    this.fullName = first + ' ' + this.last;
-                },
-
-                last: function (last) {
-                    this.fullName = this.first + ' ' + last;
+            computed: {
+                fullName: function () {
+                    return this.first + ' ' + this.last
                 },
             },
         });
