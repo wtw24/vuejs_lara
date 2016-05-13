@@ -7,28 +7,51 @@
 </head>
 <body>
     <div id="app">
-        <!--<button type="submit" @click="updateCount">-->
-        <button type="submit" @click="count += 1">
-            Increment Counter: {{ count }}
-        </button>
+
+        <counter heading="Likes"></counter>
+        <counter heading="Dislikes"></counter>
+
+        <!--<button type="submit" @click="count += 1">-->
+            <!--Likes: {{ count }}-->
+        <!--</button>-->
+
+        <!--<button type="submit" @click="count += 1">-->
+            <!--Dislikes: {{ count }}-->
+        <!--</button>-->
 
         <pre><hr>{{ $data | json }}<hr></pre>
     </div>
 
+    <template id="counter-template">
+        <h1>{{ heading }}</h1>
+        <button @click="count += 1">{{ count }}</button>
+    </template>
+
     <script src="vue.js"></script>
     <script>
+
+        Vue.component('counter', {
+            template: '#counter-template',
+
+            props: [
+                'heading',
+            ],
+
+            data: function () {
+                return {
+                    count: 0,
+                }
+            }
+        });
 
         new Vue({
             el: '#app',
 
-            data: {
-                count: 0,
-            },
+//            data: {
+//                count: 0,
+//            },
 
             methods: {
-                updateCount: function () {
-                    this.count += 1;
-                }
             },
         });
     </script>
