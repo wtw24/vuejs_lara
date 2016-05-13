@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="container">
-            <tasks list="{{ $tasks }}"></tasks>
+            <tasks></tasks>
         </div>
         
         <template id="tasks-template">
@@ -19,6 +19,7 @@
             </ul>
         </template>
 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
         <script src="/js/main.js"></script>
     </body>

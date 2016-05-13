@@ -1,13 +1,19 @@
 Vue.component('tasks', {
     template: '#tasks-template',
-    
-    props: ['list'],
+
+    data: function () {
+        return {
+            list: [],
+        };
+    },
 
     created: function () {
-        this.list = JSON.parse(this.list);
-    }
+        $.getJSON('api/tasks', function (tasks) {
+            this.list = tasks;
+        }.bind(this));
+    },
 });
 
 new Vue({
-    el: 'body'
+    el: 'body',
 });
