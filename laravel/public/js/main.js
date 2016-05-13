@@ -13,9 +13,15 @@ Vue.component('tasks', {
     
     methods: {
         fetchTasksList: function () {
-            $.getJSON('api/tasks', function (tasks) {
-                this.list = tasks;
-            }.bind(this));
+            var resource = this.$resource('api/tasks/{/id}');
+
+            resource.get().then(function (response) {
+                this.list = response.data;
+            });
+
+            // this.$http.get('api/tasks', function (tasks) {
+            //     this.list = tasks;
+            // });
         },
 
         deleteTask: function (task) {
