@@ -1,0 +1,25 @@
+.Alert {
+  position: relative;
+  background-color: #ddd;
+  padding: 1em;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.Alert--success {
+  background-color: rgba(0, 158, 0, 0.42);
+  border: 1px solid #006500;
+}
+
+.Alert--error {
+  background-color: rgba(229, 52, 51, 0.42);
+  border: 1px solid #ae4846;
+}
+
+.Alert__close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
