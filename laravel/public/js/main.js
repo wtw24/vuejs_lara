@@ -10428,6 +10428,27 @@ setTimeout(function () {
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":1}],4:[function(require,module,exports){
+var inserted = exports.cache = {}
+
+exports.insert = function (css) {
+  if (inserted[css]) return
+  inserted[css] = true
+
+  var elem = document.createElement('style')
+  elem.setAttribute('type', 'text/css')
+
+  if ('textContent' in elem) {
+    elem.textContent = css
+  } else {
+    elem.styleSheet.cssText = css
+  }
+
+  document.getElementsByTagName('head')[0].appendChild(elem)
+  return elem
+}
+
+},{}],5:[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert(".Alert {\n  position: relative;\n  background: #ddd;\n  border: 1px solid #c7c7c7;\n  padding: 1em;\n  margin-bottom: 10px;\n}\n.Alert--success {\n  background: #8cff8c;\n  border: 1px solid #8cff8c;\n}\n.Alert--error {\n  background: #ffb3b3;\n  border: 1px solid #ffb3b3;\n}\n.Alert__close {\n  position: absolute;\n  top: 1em;\n  right: 1em;\n  font-weight: bold;\n  cursor: pointer;\n}\n")
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -10462,13 +10483,17 @@ if (module.hot) {(function () {  module.hot.accept()
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   var id = "/Users/wladimir/Development/Learning/vuejs/laracasts/www/laravel/resources/assets/js/components/Alert.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache[".Alert {\n  position: relative;\n  background: #ddd;\n  border: 1px solid #c7c7c7;\n  padding: 1em;\n  margin-bottom: 10px;\n}\n.Alert--success {\n  background: #8cff8c;\n  border: 1px solid #8cff8c;\n}\n.Alert--error {\n  background: #ffb3b3;\n  border: 1px solid #ffb3b3;\n}\n.Alert__close {\n  position: absolute;\n  top: 1em;\n  right: 1em;\n  font-weight: bold;\n  cursor: pointer;\n}\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
   if (!module.hot.data) {
     hotAPI.createRecord(id, module.exports)
   } else {
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":3,"vue-hot-reload-api":2}],5:[function(require,module,exports){
+},{"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],6:[function(require,module,exports){
 'use strict';
 
 var _Alert = require('./components/Alert.vue');
@@ -10489,6 +10514,6 @@ new Vue({
     }
 });
 
-},{"./components/Alert.vue":4,"vue":3}]},{},[5]);
+},{"./components/Alert.vue":5,"vue":3}]},{},[6]);
 
 //# sourceMappingURL=main.js.map

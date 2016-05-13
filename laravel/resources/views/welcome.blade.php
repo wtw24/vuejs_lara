@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Laravel</title>
-        <link rel="stylesheet" href="{{ url('css/app.css') }}">
     </head>
     <body>
         <div id="app" class="container">
