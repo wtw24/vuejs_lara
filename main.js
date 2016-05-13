@@ -1,3 +1,9 @@
+Vue.component('tasks', {
+    props: ['list'],
+
+    template: '#tasks-template',
+});
+
 var vm = new Vue({
     el: '#app',
 
