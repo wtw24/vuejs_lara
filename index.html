@@ -11,15 +11,7 @@
         <counter heading="Likes"></counter>
         <counter heading="Dislikes"></counter>
 
-        <!--<button type="submit" @click="count += 1">-->
-            <!--Likes: {{ count }}-->
-        <!--</button>-->
-
-        <!--<button type="submit" @click="count += 1">-->
-            <!--Dislikes: {{ count }}-->
-        <!--</button>-->
-
-        <pre><hr>{{ $data | json }}<hr></pre>
+        <!--<pre><hr>{{ $data | json }}<hr></pre>-->
     </div>
 
     <template id="counter-template">
@@ -30,29 +22,25 @@
     <script src="vue.js"></script>
     <script>
 
-        Vue.component('counter', {
-            template: '#counter-template',
-
-            props: [
-                'heading',
-            ],
-
-            data: function () {
-                return {
-                    count: 0,
-                }
-            }
-        });
 
         new Vue({
             el: '#app',
 
-//            data: {
-//                count: 0,
-//            },
+            components: {
+                counter: {
+                    template: '#counter-template',
 
-            methods: {
-            },
+                    props: [
+                        'heading',
+                    ],
+
+                    data: function () {
+                        return {
+                            count: 0,
+                        }
+                    }
+                }
+            }
         });
     </script>
 </body>
