@@ -8,33 +8,24 @@
 <body>
 <div id="app">
 
-    <tasks :list="tasks"></tasks>
+    <alert type="success">
+        <strong>Success!</strong>
+        Your account has ben updated.
+    </alert>
 
-    <pre><hr>{{ $data | json }}<hr></pre>
+    <alert type="error">
+        <strong>Error!</strong>
+        Your account has not ben updated.
+    </alert>
+
 </div>
 
-<template id="tasks-template">
-    <h1>
-        My Tasks
-        <span v-show="remaining">({{ remaining }})</span>
-    </h1>
-
-    <ul v-show="list.length">
-        <li :class="{ 'completed' : task.completed }"
-            v-for="task in list"
-            @click="task.completed = ! task.completed"
-        >
-            {{ task.body }}
-
-            <strong @click="deleteTask(task)">[x]</strong>
-        </li>
-    </ul>
-
-    <p v-else>
-        No Tasks yet!
-    </p>
-
-    <button @click="clearCompleted">Clear Completed</button>
+<template id="alert-template">
+    <!--<div :class="['Alert', type == 'success' ? 'Alert&#45;&#45;success' : '']" v-show="show">-->
+    <div :class="alertClasses" v-show="show">
+        <slot></slot>
+        <span class="Alert__close" @click="show = false">x</span>
+    </div>
 </template>
 
 
