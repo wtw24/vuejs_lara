@@ -1,26 +1,29 @@
-Vue.filter('jsonIt', function (value) {
-    return JSON.stringify(value);
-});
+Vue.component('message', {
+    template: '<input v-model="message" @keyup.enter="storeMessage">',
 
-Vue.filter('role', function (value, role) {
-    return value.filter(function (item) {
-        return item.role == role;
-    });
+    data: function () {
+        return {
+            message: '',
+        };
+    },
+
+    methods: {
+        storeMessage: function () {
+            // console.log('Storing: ' + this.message);
+
+            this.$dispatch('new-message', this.message);
+
+            this.message = '';
+        },
+    },
 });
 
 var vm = new Vue({
     el: '#app',
     
-    data: {
-        message: 'hello world',
-
-        people: [
-            { name: 'Joe', role: 'admin' },
-            { name: 'Susan', role: 'admin' },
-            { name: 'Frank', role: 'student' },
-            { name: 'Jeffrey', role: 'admin' },
-            { name: 'Wladimir', role: 'student' },
-            { name: 'Peter', role: 'student' },
-        ]
+    events: {
+        'new-message': function (message) {
+            console.log('Parent is handling: ' + message);
+        },
     },
 });

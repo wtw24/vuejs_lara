@@ -7,17 +7,7 @@
 </head>
 <body>
 <div id="app">
-
-    <ul>
-        <!--<li v-for="person in people | orderBy 'name' -1 | limitBy 2 ">{{ person.name }}</li>-->
-        <li v-for="person in people | role 'admin' ">{{ person.name }}</li>
-    </ul>
-
-    <!--<h1>{{ '5' | currency '€' }}</h1>-->
-
-    <pre>{{ $data | json }}</pre>
-    <!--<pre>{{ $data | jsonIt }}</pre>-->
-
+    <message></message>
 </div>
 
 
