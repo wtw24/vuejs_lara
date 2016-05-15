@@ -14,8 +14,8 @@ Route::get('/directives', function () {
 });
 
 
-//Route::delete('/directives/posts/{post}', function (App\Post $post) {
-Route::delete('/directives/posts/{post}', function ($post) {
+Route::delete('/directives/posts/{post}', function (App\Post $post) {
+//Route::delete('/directives/posts/{post}', function ($post) {
     //$post->delete();
 
     return 'delete Post with ID ' . $post;

@@ -5,7 +5,7 @@
     </head>
     <body>
 
-        <form method="post" action="directives/posts/1" v-ajax>
+        <form method="post" action="directives/posts/1" v-ajax completed="Okay, the post has been deleted.">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
 

@@ -1,6 +1,9 @@
 // Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[name="_token"]').value;
 
 Vue.directive('ajax', {
+
+    params: ['completed'],
+
     bind: function () {
        this.el.addEventListener('submit', this.onSubmit.bind(this));
     },
@@ -17,11 +20,18 @@ Vue.directive('ajax', {
         e.preventDefault();
 
         this.vm.$http[this.getRequestType()](this.el.action)
-            .then(this.onComplete.bind(this));
+            .then(this.onComplete.bind(this))
+            .catch(this.onError.bind(this));
+    },
+
+    onError: function (response) {
+        alert(response.data.message);
     },
 
     onComplete: function () {
-        alert('Complete');
+        if (this.params.completed) {
+            alert(this.params.completed);
+        }
     },
 
     getRequestType: function () {
