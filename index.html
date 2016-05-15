@@ -8,25 +8,17 @@
 <body>
 <div id="app">
 
-    <alert type="success">
-        <strong>Success!</strong>
-        Your account has ben updated.
-    </alert>
+    <ul>
+        <!--<li v-for="person in people | orderBy 'name' -1 | limitBy 2 ">{{ person.name }}</li>-->
+        <li v-for="person in people | role 'admin' ">{{ person.name }}</li>
+    </ul>
 
-    <alert type="error">
-        <strong>Error!</strong>
-        Your account has not ben updated.
-    </alert>
+    <!--<h1>{{ '5' | currency '€' }}</h1>-->
+
+    <pre>{{ $data | json }}</pre>
+    <!--<pre>{{ $data | jsonIt }}</pre>-->
 
 </div>
-
-<template id="alert-template">
-    <!--<div :class="['Alert', type == 'success' ? 'Alert&#45;&#45;success' : '']" v-show="show">-->
-    <div :class="alertClasses" v-show="show">
-        <slot></slot>
-        <span class="Alert__close" @click="show = false">x</span>
-    </div>
-</template>
 
 
 <script src="vue.js"></script>
