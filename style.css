@@ -1,11 +1,4 @@
 div.test {
     background-color: grey;
+    height: 50px;
 }
-
-.fade-transition {
-    transition: all 1.9s ease;
-}
-.fade-enter, .fade-leave {
-    opacity: 0;
-}
-.fade-leave {}

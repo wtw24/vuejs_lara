@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>VueJS</title>
+    <link rel="stylesheet" href="animate.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="app">
-    <div v-show="show" class="test" transition="fade">Hello World</div>
+    <div v-show="show" class="test animated" transition="fade">Hello World</div>
     <button @click="show = ! show">Toggle</button>
 </div>
 
