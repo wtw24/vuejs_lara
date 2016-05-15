@@ -7,9 +7,8 @@
 </head>
 <body>
 <div id="app">
-    <message @new-message="handleNewMessage"></message>
-
-    <pre>{{ $data | json }}</pre>
+    <div v-show="show" class="test" transition="fade">Hello World</div>
+    <button @click="show = ! show">Toggle</button>
 </div>
 
 
