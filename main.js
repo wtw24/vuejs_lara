@@ -21,9 +21,15 @@ Vue.component('message', {
 var vm = new Vue({
     el: '#app',
     
-    events: {
-        'new-message': function (message) {
-            console.log('Parent is handling: ' + message);
-        },
+    data: {
+        messages: [],
+    },
+    
+    methods: {
+        handleNewMessage: function (message) {
+            this.messages.push(message);
+
+            console.log('Parent is handling the ' + message);
+        }
     },
 });

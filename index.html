@@ -7,7 +7,9 @@
 </head>
 <body>
 <div id="app">
-    <message></message>
+    <message @new-message="handleNewMessage"></message>
+
+    <pre>{{ $data | json }}</pre>
 </div>
 
 
