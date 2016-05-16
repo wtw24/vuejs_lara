@@ -1,9 +1,17 @@
 Vue.component('home-page', {
-    template: '<h2>Home Page</h2>'
+    methods: {
+        doSomethingElse: function () {
+            alert('doSomethingElse');
+        },
+    },
 });
 
 Vue.component('about-page', {
-    template: '<h2>About Page</h2>'
+    methods: {
+        doSomething: function () {
+            alert('doSomething');
+        },
+    },
 });
 
 var vm = new Vue({
