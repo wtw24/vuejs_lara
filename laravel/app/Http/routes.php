@@ -29,6 +29,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/alert', function () {
+Route::get('begin', function () {
+    session()->flash('status', 'You are now signed in');
+
+    return redirect('/alert');
+});
+
+Route::get('alert', function () {
     return view('alert');
 });
