@@ -1,23 +1,35 @@
-Vue.component('home-page', {
+const FetchesUser = {
     methods: {
-        doSomethingElse: function () {
-            alert('doSomethingElse');
+        fetchUser() {
+            alert('fetch the user');
         },
-    },
-});
+    }
+};
 
-Vue.component('about-page', {
+const RenderGraph = {
     methods: {
-        doSomething: function () {
-            alert('doSomething');
+        render() {
+            alert('render the chart');
         },
-    },
-});
+    }
+};
 
-var vm = new Vue({
+const RevenueGraph = new Vue({
     el: 'body',
 
-    data: {
-        currentView: 'home-page',
-    },
+    mixins: [RenderGraph],
+
+    ready() {
+        this.render();
+    }
+});
+
+const SignupsGraph = new Vue({
+    el: 'body',
+
+    mixins: [RenderGraph],
+
+    ready() {
+        this.render();
+    }
 });

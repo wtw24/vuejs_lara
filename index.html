@@ -8,23 +8,6 @@
 </head>
 <body>
 
-    <!-- master.blade.php -->
-    <!--<component is="{{ $curenntView }}" inline-template>-->
-    <component is="about-page" inline-template>
-        <h2>About Page</h2>
-        <!--@yield('content')-->
-        <button @click="doSomething">Click Me</button>
-    </component>
-
-    <!--<component is="home-page" inline-template>-->
-        <!--<h2>Home Page</h2>-->
-        <!--<button @click="doSomethingElse">Click Me</button>-->
-    <!--</component>-->
-
-    <div>
-        <a href="#" @click="currentView = 'home-page'">Home</a> |
-        <a href="#" @click="currentView = 'about-page'">About</a>
-    </div>
 
 <script src="vue.js"></script>
 <script src="main.js"></script>
