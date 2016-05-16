@@ -28,3 +28,7 @@ Route::get('/home', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::get('/alert', function () {
+    return view('alert');
+});

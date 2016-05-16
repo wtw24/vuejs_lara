@@ -14,5 +14,5 @@ require('laravel-elixir-vueify');
  */
 
 elixir(function(mix) {
-    mix.browserify('spa.js');
+    mix.browserify('alert.js');
 });
