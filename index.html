@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome back, {{ shared.username }}</h1>
+    <component :is="currentView"></component>
 
-    <notification>This is a notification!</notification>
+    <a href="#" @click="currentView = 'home-page'">Home</a> |
+    <a href="#" @click="currentView = 'about-page'">About</a>
 
 <script src="vue.js"></script>
 <script src="main.js"></script>
