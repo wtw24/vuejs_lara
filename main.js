@@ -1,16 +1,25 @@
 var store = {
-    username: 'WladimirWendland',
+    state: {
+        username: 'WladimirWendland',
+    },
+
+    updateUsername: function (username) {
+        this.state.username = username;
+    },
 };
 
 var vm = new Vue({
     el: 'body',
 
-    data: store,
+    data: {
+        misc: 'data',
+        shared: store.state,
+    },
     
     components: {
         notification: {
             data: function () {
-                return store;
+                return store.state;
             },
 
             template: '<h2>{{ username }}: <slot></slot></h2>',
