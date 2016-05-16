@@ -1,12 +1,19 @@
-Vue.transition('fade', {
-    enterClass: 'fadeInUp',
-    leaveClass: 'fadeOutLeft',
-});
+var store = {
+    username: 'WladimirWendland',
+};
 
 var vm = new Vue({
-    el: '#app',
+    el: 'body',
+
+    data: store,
     
-    data: {
-        show: true,
+    components: {
+        notification: {
+            data: function () {
+                return store;
+            },
+
+            template: '<h2>{{ username }}: <slot></slot></h2>',
+        },
     },
 });

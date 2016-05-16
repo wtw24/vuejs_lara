@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app">
-    <div v-show="show" class="test animated" transition="fade">Hello World</div>
-    <button @click="show = ! show">Toggle</button>
-</div>
+    <h1>Welcome back, {{ username }}</h1>
 
+    <notification>This is a notification!</notification>
 
 <script src="vue.js"></script>
 <script src="main.js"></script>
