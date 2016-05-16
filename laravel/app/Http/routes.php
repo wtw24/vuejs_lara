@@ -20,3 +20,11 @@ Route::delete('/directives/posts/{post}', function (App\Post $post) {
 
     return 'delete Post with ID ' . $post;
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
